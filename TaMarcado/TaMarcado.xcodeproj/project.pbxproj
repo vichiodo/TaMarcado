@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F751B29DAE700303269 /* AppDelegate.swift */; };
+		8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F771B29DAE700303269 /* TaMarcado.xcdatamodeld */; };
+		8CC51F7B1B29DAE700303269 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F7A1B29DAE700303269 /* ViewController.swift */; };
+		8CC51F7E1B29DAE700303269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CC51F7C1B29DAE700303269 /* Main.storyboard */; };
+		8CC51F801B29DAE700303269 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CC51F7F1B29DAE700303269 /* Images.xcassets */; };
+		8CC51F831B29DAE700303269 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC51F811B29DAE700303269 /* LaunchScreen.xib */; };
+		8CC51F8F1B29DAE700303269 /* TaMarcadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F8E1B29DAE700303269 /* TaMarcadoTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CC51F891B29DAE700303269 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CC51F681B29DAE700303269 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CC51F6F1B29DAE700303269;
+			remoteInfo = TaMarcado;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8CC51F701B29DAE700303269 /* TaMarcado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaMarcado.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CC51F741B29DAE700303269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CC51F751B29DAE700303269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CC51F781B29DAE700303269 /* TaMarcado.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaMarcado.xcdatamodel; sourceTree = "<group>"; };
+		8CC51F7A1B29DAE700303269 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CC51F7D1B29DAE700303269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8CC51F7F1B29DAE700303269 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8CC51F821B29DAE700303269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8CC51F881B29DAE700303269 /* TaMarcadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaMarcadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CC51F8D1B29DAE700303269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CC51F8E1B29DAE700303269 /* TaMarcadoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaMarcadoTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CC51F6D1B29DAE700303269 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CC51F851B29DAE700303269 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CC51F671B29DAE700303269 = {
+			isa = PBXGroup;
+			children = (
+				8CC51F721B29DAE700303269 /* TaMarcado */,
+				8CC51F8B1B29DAE700303269 /* TaMarcadoTests */,
+				8CC51F711B29DAE700303269 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CC51F711B29DAE700303269 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51F701B29DAE700303269 /* TaMarcado.app */,
+				8CC51F881B29DAE700303269 /* TaMarcadoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CC51F721B29DAE700303269 /* TaMarcado */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51F751B29DAE700303269 /* AppDelegate.swift */,
+				8CC51F7A1B29DAE700303269 /* ViewController.swift */,
+				8CC51F7C1B29DAE700303269 /* Main.storyboard */,
+				8CC51F7F1B29DAE700303269 /* Images.xcassets */,
+				8CC51F811B29DAE700303269 /* LaunchScreen.xib */,
+				8CC51F771B29DAE700303269 /* TaMarcado.xcdatamodeld */,
+				8CC51F731B29DAE700303269 /* Supporting Files */,
+			);
+			path = TaMarcado;
+			sourceTree = "<group>";
+		};
+		8CC51F731B29DAE700303269 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51F741B29DAE700303269 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CC51F8B1B29DAE700303269 /* TaMarcadoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51F8E1B29DAE700303269 /* TaMarcadoTests.swift */,
+				8CC51F8C1B29DAE700303269 /* Supporting Files */,
+			);
+			path = TaMarcadoTests;
+			sourceTree = "<group>";
+		};
+		8CC51F8C1B29DAE700303269 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51F8D1B29DAE700303269 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CC51F6F1B29DAE700303269 /* TaMarcado */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CC51F921B29DAE700303269 /* Build configuration list for PBXNativeTarget "TaMarcado" */;
+			buildPhases = (
+				8CC51F6C1B29DAE700303269 /* Sources */,
+				8CC51F6D1B29DAE700303269 /* Frameworks */,
+				8CC51F6E1B29DAE700303269 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaMarcado;
+			productName = TaMarcado;
+			productReference = 8CC51F701B29DAE700303269 /* TaMarcado.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8CC51F871B29DAE700303269 /* TaMarcadoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CC51F951B29DAE700303269 /* Build configuration list for PBXNativeTarget "TaMarcadoTests" */;
+			buildPhases = (
+				8CC51F841B29DAE700303269 /* Sources */,
+				8CC51F851B29DAE700303269 /* Frameworks */,
+				8CC51F861B29DAE700303269 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CC51F8A1B29DAE700303269 /* PBXTargetDependency */,
+			);
+			name = TaMarcadoTests;
+			productName = TaMarcadoTests;
+			productReference = 8CC51F881B29DAE700303269 /* TaMarcadoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CC51F681B29DAE700303269 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Ricardo Hochman";
+				TargetAttributes = {
+					8CC51F6F1B29DAE700303269 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					8CC51F871B29DAE700303269 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 8CC51F6F1B29DAE700303269;
+					};
+				};
+			};
+			buildConfigurationList = 8CC51F6B1B29DAE700303269 /* Build configuration list for PBXProject "TaMarcado" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8CC51F671B29DAE700303269;
+			productRefGroup = 8CC51F711B29DAE700303269 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CC51F6F1B29DAE700303269 /* TaMarcado */,
+				8CC51F871B29DAE700303269 /* TaMarcadoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CC51F6E1B29DAE700303269 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CC51F7E1B29DAE700303269 /* Main.storyboard in Resources */,
+				8CC51F831B29DAE700303269 /* LaunchScreen.xib in Resources */,
+				8CC51F801B29DAE700303269 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CC51F861B29DAE700303269 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CC51F6C1B29DAE700303269 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CC51F7B1B29DAE700303269 /* ViewController.swift in Sources */,
+				8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */,
+				8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CC51F841B29DAE700303269 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CC51F8F1B29DAE700303269 /* TaMarcadoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CC51F8A1B29DAE700303269 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CC51F6F1B29DAE700303269 /* TaMarcado */;
+			targetProxy = 8CC51F891B29DAE700303269 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CC51F7C1B29DAE700303269 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CC51F7D1B29DAE700303269 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8CC51F811B29DAE700303269 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CC51F821B29DAE700303269 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CC51F901B29DAE700303269 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8CC51F911B29DAE700303269 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CC51F931B29DAE700303269 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TaMarcado/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8CC51F941B29DAE700303269 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TaMarcado/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8CC51F961B29DAE700303269 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TaMarcadoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaMarcado.app/TaMarcado";
+			};
+			name = Debug;
+		};
+		8CC51F971B29DAE700303269 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TaMarcadoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaMarcado.app/TaMarcado";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CC51F6B1B29DAE700303269 /* Build configuration list for PBXProject "TaMarcado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CC51F901B29DAE700303269 /* Debug */,
+				8CC51F911B29DAE700303269 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CC51F921B29DAE700303269 /* Build configuration list for PBXNativeTarget "TaMarcado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CC51F931B29DAE700303269 /* Debug */,
+				8CC51F941B29DAE700303269 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8CC51F951B29DAE700303269 /* Build configuration list for PBXNativeTarget "TaMarcadoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CC51F961B29DAE700303269 /* Debug */,
+				8CC51F971B29DAE700303269 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8CC51F771B29DAE700303269 /* TaMarcado.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8CC51F781B29DAE700303269 /* TaMarcado.xcdatamodel */,
+			);
+			currentVersion = 8CC51F781B29DAE700303269 /* TaMarcado.xcdatamodel */;
+			path = TaMarcado.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8CC51F681B29DAE700303269 /* Project object */;
+}
