@@ -78,7 +78,8 @@ class PontoManager {
         
         let archivedLocation = NSKeyedArchiver.archivedDataWithRootObject(localizacao)
 
-        ponto.setValue(archivedLocation, forKey: "localizacao")
+        ponto.setValue(localizacao, forKey: "localizacao")
+
         
         salvarPonto()
     }

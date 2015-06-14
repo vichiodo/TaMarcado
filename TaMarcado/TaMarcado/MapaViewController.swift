@@ -19,6 +19,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager! = CLLocationManager()
     var locations: NSArray = []
     var userDef: NSUserDefaults!
+    var mapaPoints: Array<MapaPoint>!
     
     var txtField: UITextField?
     
@@ -40,7 +41,14 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         mapa.removeAnnotations(mapa.annotations)
-        mapa.addAnnotations(pontos)
+        for var i = 0; i<pontos.count; ++i{
+            var mp: MapaPoint!
+            mp.criaPonto((pontos[i].localizacao as! CLLocation).coordinate, nome: pontos[i].nome, endereco: pontos[i].endereco)
+            mp.adicionarPin(mapa)
+            mapaPoints[i] = mp
+        }
+        
+        mapa.addAnnotations(mapaPoints)
 //        PontoManager.sharedInstance.pegarNovoLocal().adicionarPin(mapa)
     }
     
@@ -72,19 +80,16 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             textField.placeholder = "Nome"
             self.txtField = textField
         }
-        let salvar:UIAlertAction = UIAlertAction(title: "Tirar foto", style: .Default, handler: { (ACTION) -> Void in
+        let salvar:UIAlertAction = UIAlertAction(title: "", style: .Default, handler: { (ACTION) -> Void in
             nomeLocal = self.txtField!.text
             if nomeLocal == "" {
-                PontoManager.sharedInstance.pegarNovoLocal().title = "Local"
-            }
-            else {
-                PontoManager.sharedInstance.pegarNovoLocal().title = nomeLocal
+                nomeLocal = "Local"
             }
             var mapaPoint = MapaPoint()
             mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mapaPoint.adicionarPin(self.mapa)
             
-            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: self.locations.lastObject as! CLLocation)
+            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
             
 
         })

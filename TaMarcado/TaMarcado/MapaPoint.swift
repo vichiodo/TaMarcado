@@ -29,6 +29,7 @@ class MapaPoint: NSObject, MKAnnotation {
     func adicionarPin(mapa: MKMapView){
         var aux: CLLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
     
+        
         CLGeocoder().reverseGeocodeLocation(aux, completionHandler: { (placemarks, error) -> Void in
             if (error != nil){
                 println("ERRO")

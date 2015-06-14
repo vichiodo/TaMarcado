@@ -2,10 +2,10 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Ponto" representedClassName="TaMarcado.Ponto" syncable="YES">
         <attribute name="endereco" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="localizacao" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="localizacao" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ponto" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Ponto" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

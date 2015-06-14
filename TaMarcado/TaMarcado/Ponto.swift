@@ -1,19 +1,18 @@
 //
 //  Ponto.swift
-//  
+//  TaMarcado
 //
-//  Created by Ricardo Hochman on 11/06/15.
-//
+//  Created by Vivian Dias on 12/06/15.
+//  Copyright (c) 2015 Ricardo Hochman. All rights reserved.
 //
 
 import Foundation
 import CoreData
-import MapKit
 
-class Ponto: NSManagedObject {
+class Ponto: NSManagedObject{
 
-    @NSManaged var localizacao: NSData
-    @NSManaged var nome: String
     @NSManaged var endereco: String
-
+    @NSManaged var nome: String
+    @NSManaged var localizacao: AnyObject
+    
 }

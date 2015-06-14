@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44B83C4E1B2B02DF006AA6D8 /* Ponto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */; };
 		8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F751B29DAE700303269 /* AppDelegate.swift */; };
 		8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F771B29DAE700303269 /* TaMarcado.xcdatamodeld */; };
 		8CC51F7B1B29DAE700303269 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F7A1B29DAE700303269 /* MapaViewController.swift */; };
@@ -14,7 +15,6 @@
 		8CC51F801B29DAE700303269 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CC51F7F1B29DAE700303269 /* Images.xcassets */; };
 		8CC51F831B29DAE700303269 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC51F811B29DAE700303269 /* LaunchScreen.xib */; };
 		8CC51F8F1B29DAE700303269 /* TaMarcadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F8E1B29DAE700303269 /* TaMarcadoTests.swift */; };
-		8CC51F991B29DD1B00303269 /* Ponto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F981B29DD1B00303269 /* Ponto.swift */; };
 		8CC51F9B1B29DD4700303269 /* PontoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F9A1B29DD4700303269 /* PontoManager.swift */; };
 		8CC51F9D1B29E13300303269 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC51F9C1B29E13300303269 /* MapKit.framework */; };
 		8CC51F9F1B29E13A00303269 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC51F9E1B29E13A00303269 /* CoreLocation.framework */; };
@@ -33,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ponto.swift; sourceTree = "<group>"; };
 		8CC51F701B29DAE700303269 /* TaMarcado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaMarcado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC51F741B29DAE700303269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CC51F751B29DAE700303269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		8CC51F881B29DAE700303269 /* TaMarcadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaMarcadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC51F8D1B29DAE700303269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CC51F8E1B29DAE700303269 /* TaMarcadoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaMarcadoTests.swift; sourceTree = "<group>"; };
-		8CC51F981B29DD1B00303269 /* Ponto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ponto.swift; sourceTree = "<group>"; };
 		8CC51F9A1B29DD4700303269 /* PontoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PontoManager.swift; sourceTree = "<group>"; };
 		8CC51F9C1B29E13300303269 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8CC51F9E1B29E13A00303269 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				8CC51F751B29DAE700303269 /* AppDelegate.swift */,
-				8CC51F981B29DD1B00303269 /* Ponto.swift */,
+				44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */,
 				8CC51F9A1B29DD4700303269 /* PontoManager.swift */,
 				8CC51F7A1B29DAE700303269 /* MapaViewController.swift */,
 				8CC51FA01B29F2ED00303269 /* ListaViewController.swift */,
@@ -238,7 +238,7 @@
 				8CC51FA11B29F2ED00303269 /* ListaViewController.swift in Sources */,
 				8CC51F7B1B29DAE700303269 /* MapaViewController.swift in Sources */,
 				8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */,
-				8CC51F991B29DD1B00303269 /* Ponto.swift in Sources */,
+				44B83C4E1B2B02DF006AA6D8 /* Ponto.swift in Sources */,
 				8CC51F9B1B29DD4700303269 /* PontoManager.swift in Sources */,
 				8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */,
 				8CC51FA31B29FD0200303269 /* MapaPoint.swift in Sources */,
@@ -437,6 +437,7 @@
 				8CC51F941B29DAE700303269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CC51F951B29DAE700303269 /* Build configuration list for PBXNativeTarget "TaMarcadoTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +446,7 @@
 				8CC51F971B29DAE700303269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
