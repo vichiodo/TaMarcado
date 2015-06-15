@@ -82,16 +82,16 @@
             </objects>
             <point key="canvasLocation" x="1503" y="216"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Lista View Controller-->
         <scene sceneID="lbH-gj-vcz">
             <objects>
-                <tableViewController id="bYq-Uo-lM6" sceneMemberID="viewController">
+                <tableViewController id="bYq-Uo-lM6" customClass="ListaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="22" sectionFooterHeight="22" id="jJc-FO-gNI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="101" id="9m3-Nl-fuP" customClass="CellController" customModule="TaMarcado" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellController" rowHeight="101" id="9m3-Nl-fuP" customClass="CellController" customModule="TaMarcado" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9m3-Nl-fuP" id="4hv-tE-Aoa">
                                     <autoresizingMask key="autoresizingMask"/>

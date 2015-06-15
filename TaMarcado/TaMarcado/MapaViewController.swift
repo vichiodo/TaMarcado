@@ -43,15 +43,16 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        mapa.removeAnnotations(mapa.annotations)
-        for var i = 0; i<pontos.count; ++i{
-            var mp: MapaPoint!
-            mp.criaPonto((pontos[i].localizacao as! CLLocation).coordinate, nome: pontos[i].nome, endereco: pontos[i].endereco)
-            mp.adicionarPin(mapa)
-            mapaPoints[i] = mp
-        }
+//        mapa.removeAnnotations(mapa.annotations)
+//        for var i = 0; i<pontos.count; ++i{
+//            var mp: MapaPoint?
+//            mp!.criaPonto((pontos[i].localizacao as! CLLocation).coordinate, nome: pontos[i].nome, endereco: pontos[i].endereco)
+//            mp!.adicionarPin(mapa)
+//            mapaPoints[i] = mp!
         
-        mapa.addAnnotations(mapaPoints)
+//        }
+//        
+//        mapa.addAnnotations(mapaPoints)
 //        PontoManager.sharedInstance.pegarNovoLocal().adicionarPin(mapa)
     }
     
@@ -101,6 +102,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             PontoManager.sharedInstance.salvarPonto()
             
             PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
+            var p = PontoManager.sharedInstance.buscarPontos()
+            print(p.count)
         })
         [alerta.addAction(salvar)]
         

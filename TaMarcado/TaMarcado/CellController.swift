@@ -13,6 +13,5 @@ class CellController: UITableViewCell {
 
  
     @IBOutlet weak var nome: UILabel!
-
     @IBOutlet weak var endereco: UILabel!
 }

@@ -6,15 +6,16 @@
 //  Copyright (c) 2015 Ricardo Hochman. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class ListaViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     var pontoSelecionado:Ponto?
     
-    lazy var pontos:Array<Ponto> = {
+   lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
-        }()
-    
+    }()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,6 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
     
     
     override func viewWillAppear(animated: Bool) {
-        
         pontos = PontoManager.sharedInstance.buscarPontos()
         self.tableView.reloadData()
         
@@ -52,7 +52,7 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
     {
         let item:Ponto = pontos[indexPath.row]
         
-        var cell:CellController = tableView.dequeueReusableCellWithIdentifier("cell") as! CellController
+        var cell:CellController = tableView.dequeueReusableCellWithIdentifier("CellController") as! CellController
         
         cell.nome.text = item.nome
         cell.endereco.text = item.endereco
@@ -60,31 +60,31 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
-    
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
-            var pontoSelecionado = self.pontos[indexPath.row]
-            
-            if PontoManager.sharedInstance.apagarPonto(pontoSelecionado) {
-                self.pontos.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            } else {
-                let alertController = UIAlertController(title: "Remoção", message: "Não foi possível remover o ponto", preferredStyle: .Alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertController.addAction(defaultAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        }
-        
-        return [deleteAction]
-    }
+//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
+//    
+//    
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
+//    
+//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+//        
+//        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
+//            var pontoSelecionado = self.pontos[indexPath.row]
+//            
+//            if PontoManager.sharedInstance.apagarPonto(pontoSelecionado) {
+//                self.pontos.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+//            } else {
+//                let alertController = UIAlertController(title: "Remoção", message: "Não foi possível remover o ponto", preferredStyle: .Alert)
+//                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+//                alertController.addAction(defaultAction)
+//                self.presentViewController(alertController, animated: true, completion: nil)
+//            }
+//        }
+//        
+//        return [deleteAction]
+//    }
     
 
     /*
