@@ -88,7 +88,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         }
         let salvar:UIAlertAction = UIAlertAction(title: "", style: .Default, handler: { (ACTION) -> Void in
             nomeLocal = self.txtField!.text
-            if nomeLocal == "" {
+            if (nomeLocal == "" || nomeLocal == " ") {
                 nomeLocal = "Local"
             }
             var mapaPoint = MapaPoint()
