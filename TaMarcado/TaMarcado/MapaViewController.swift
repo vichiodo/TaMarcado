@@ -15,7 +15,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapa: MKMapView!
     @IBOutlet weak var btnLocalizacao: UIButton!
     
-    
     var locationManager: CLLocationManager! = CLLocationManager()
     var locations: NSArray = []
     var userDef: NSUserDefaults!
@@ -37,6 +36,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         }
         locationManager.startUpdatingLocation()
         mapa.userTrackingMode = MKUserTrackingMode.Follow
+        let image = UIImage(named: "localp") as UIImage!
+        btnLocalizacao.setImage(image, forState: .Normal)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,6 +73,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func marcar(sender: AnyObject) {
         locationManager.startUpdatingLocation()
         mapa.userTrackingMode = MKUserTrackingMode.Follow
+        let image = UIImage(named: "localp") as UIImage!
+        btnLocalizacao.setImage(image, forState: .Normal)
         
         var nomeLocal: String = ""
         
@@ -90,8 +93,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             mapaPoint.adicionarPin(self.mapa)
             
             PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
-            
-
         })
         [alerta.addAction(salvar)]
         
@@ -99,12 +100,18 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func localizacaoAtual(sender: AnyObject) {
+        let image = UIImage(named: "localp") as UIImage!
+        btnLocalizacao.setImage(image, forState: .Normal)
         locationManager.startUpdatingLocation()
         mapa.userTrackingMode = MKUserTrackingMode.Follow
         mapa.setRegion(MKCoordinateRegionMake(mapa.userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01)), animated: true)
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if mapa.userTrackingMode == .None {
+            let image = UIImage(named: "local") as UIImage!
+            btnLocalizacao.setImage(image, forState: .Normal)
+        }
         self.locations = locations
     }
 }
