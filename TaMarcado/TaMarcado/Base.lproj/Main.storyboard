@@ -123,7 +123,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cell" destination="Afb-wF-4Jt" id="bOY-8B-4An"/>
                                     <outlet property="endereco" destination="p6A-QG-96c" id="kSm-8p-ox0"/>
                                     <outlet property="nome" destination="Afb-wF-4Jt" id="nul-2t-JOP"/>
                                 </connections>

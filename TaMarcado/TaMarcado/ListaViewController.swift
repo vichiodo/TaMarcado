@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ListaViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     var pontoSelecionado:Ponto?
@@ -33,6 +34,7 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
     
     
     override func viewWillAppear(animated: Bool) {
+        print("oi")
         pontos = PontoManager.sharedInstance.buscarPontos()
         self.tableView.reloadData()
         
@@ -60,31 +62,31 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
         return cell
     }
     
-//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-//    
-//    
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
-//    
-//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-//        
-//        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
-//            var pontoSelecionado = self.pontos[indexPath.row]
-//            
-//            if PontoManager.sharedInstance.apagarPonto(pontoSelecionado) {
-//                self.pontos.removeAtIndex(indexPath.row)
-//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-//            } else {
-//                let alertController = UIAlertController(title: "Remoção", message: "Não foi possível remover o ponto", preferredStyle: .Alert)
-//                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//                alertController.addAction(defaultAction)
-//                self.presentViewController(alertController, animated: true, completion: nil)
-//            }
-//        }
-//        
-//        return [deleteAction]
-//    }
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
+            var pontoSelecionado = self.pontos[indexPath.row]
+            
+            if PontoManager.sharedInstance.apagarPonto(pontoSelecionado) {
+                self.pontos.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            } else {
+                let alertController = UIAlertController(title: "Remoção", message: "Não foi possível remover o ponto", preferredStyle: .Alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertController.addAction(defaultAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
+        
+        return [deleteAction]
+    }
     
 
     /*

@@ -94,16 +94,15 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             var mapaPoint = MapaPoint()
             mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mapaPoint.adicionarPin(self.mapa)
-            self.ponto = PontoManager.sharedInstance.novoPonto()
             
+            self.ponto = PontoManager.sharedInstance.novoPonto()
             self.ponto?.nome = nomeLocal
             self.ponto?.endereco = mapaPoint.subtitle
+            print(mapaPoint.subtitle)
             self.ponto?.localizacao = self.locations.lastObject!
             PontoManager.sharedInstance.salvarPonto()
             
-            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
-            var p = PontoManager.sharedInstance.buscarPontos()
-            print(p.count)
+//            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
         })
         [alerta.addAction(salvar)]
         

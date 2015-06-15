@@ -80,10 +80,10 @@ class PontoManager {
         managedContext.save(&error)
         
         if let e = error {
-            println("Erro ao tentar remover a marca (\(pontoNome)): \(error)")
+            println("Erro ao tentar remover a Ponto (\(pontoNome)): \(error)")
             return false
         } else {
-            println("Marca \(pontoNome) removida com sucesso")
+            println("Ponto \(pontoNome) removida com sucesso")
         }
         return true
     }
