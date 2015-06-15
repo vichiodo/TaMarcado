@@ -71,6 +71,23 @@ class PontoManager {
         salvarPonto()
     }
     
+    func apagarPonto(var ponto:Ponto) -> Bool
+    {
+        var error:NSError?
+        var pontoNome = ponto.nome
+        
+        managedContext.deleteObject(ponto)
+        managedContext.save(&error)
+        
+        if let e = error {
+            println("Erro ao tentar remover a marca (\(pontoNome)): \(error)")
+            return false
+        } else {
+            println("Marca \(pontoNome) removida com sucesso")
+        }
+        return true
+    }
+    
     func salvarNovoPonto(nome: String, endereco: String, localizacao: CLLocation) {
         let ponto = novoPonto()
         ponto.setValue(nome, forKey: "nome")

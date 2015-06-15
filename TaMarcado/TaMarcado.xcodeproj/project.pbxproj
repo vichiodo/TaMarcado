@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44B83C4E1B2B02DF006AA6D8 /* Ponto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */; };
+		51BBD7C91B2EFAC500DEF465 /* Ponto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBD7C81B2EFAC500DEF465 /* Ponto.swift */; };
+		51BBD7CB1B2EFC3A00DEF465 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BBD7CA1B2EFC3A00DEF465 /* CellController.swift */; };
 		8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F751B29DAE700303269 /* AppDelegate.swift */; };
 		8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F771B29DAE700303269 /* TaMarcado.xcdatamodeld */; };
 		8CC51F7B1B29DAE700303269 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51F7A1B29DAE700303269 /* MapaViewController.swift */; };
@@ -33,7 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ponto.swift; sourceTree = "<group>"; };
+		51BBD7C81B2EFAC500DEF465 /* Ponto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ponto.swift; sourceTree = "<group>"; };
+		51BBD7CA1B2EFC3A00DEF465 /* CellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		8CC51F701B29DAE700303269 /* TaMarcado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaMarcado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC51F741B29DAE700303269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CC51F751B29DAE700303269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,10 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				8CC51F751B29DAE700303269 /* AppDelegate.swift */,
-				44B83C4D1B2B02DF006AA6D8 /* Ponto.swift */,
+				51BBD7C81B2EFAC500DEF465 /* Ponto.swift */,
 				8CC51F9A1B29DD4700303269 /* PontoManager.swift */,
 				8CC51F7A1B29DAE700303269 /* MapaViewController.swift */,
 				8CC51FA01B29F2ED00303269 /* ListaViewController.swift */,
+				51BBD7CA1B2EFC3A00DEF465 /* CellController.swift */,
 				8CC51FA21B29FD0200303269 /* MapaPoint.swift */,
 				8CC51F7C1B29DAE700303269 /* Main.storyboard */,
 				8CC51F7F1B29DAE700303269 /* Images.xcassets */,
@@ -238,7 +241,8 @@
 				8CC51FA11B29F2ED00303269 /* ListaViewController.swift in Sources */,
 				8CC51F7B1B29DAE700303269 /* MapaViewController.swift in Sources */,
 				8CC51F791B29DAE700303269 /* TaMarcado.xcdatamodeld in Sources */,
-				44B83C4E1B2B02DF006AA6D8 /* Ponto.swift in Sources */,
+				51BBD7CB1B2EFC3A00DEF465 /* CellController.swift in Sources */,
+				51BBD7C91B2EFAC500DEF465 /* Ponto.swift in Sources */,
 				8CC51F9B1B29DD4700303269 /* PontoManager.swift in Sources */,
 				8CC51F761B29DAE700303269 /* AppDelegate.swift in Sources */,
 				8CC51FA31B29FD0200303269 /* MapaPoint.swift in Sources */,

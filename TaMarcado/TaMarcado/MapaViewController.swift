@@ -21,6 +21,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     var mapaPoints: Array<MapaPoint>!
     
     var txtField: UITextField?
+    var ponto:Ponto?
+    
     
     lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
@@ -91,6 +93,12 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             var mapaPoint = MapaPoint()
             mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mapaPoint.adicionarPin(self.mapa)
+            self.ponto = PontoManager.sharedInstance.novoPonto()
+            
+            self.ponto?.nome = nomeLocal
+            self.ponto?.endereco = mapaPoint.subtitle
+            self.ponto?.localizacao = self.locations.lastObject!
+            PontoManager.sharedInstance.salvarPonto()
             
             PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
         })
