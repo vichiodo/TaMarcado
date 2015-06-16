@@ -55,6 +55,15 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             mp.adicionarPin(mapa)
         
         }
+        
+        if(linha > -1){
+            var aux = mapaPoints[linha!]
+            
+            var region = MKCoordinateRegionMakeWithDistance(aux.coordinate, 500, 500)
+            mapa.setRegion(region, animated: true)
+
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

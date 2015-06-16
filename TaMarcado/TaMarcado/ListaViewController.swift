@@ -83,11 +83,13 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var indexPath = self.tableView.indexPathForSelectedRow()
-        
+        if(segue.identifier == "segue"){
         if let aux = segue.destinationViewController as? MapaViewController{
             aux.selectedCell = row
             aux.selected = true
+            aux.linha = row
         
+        }
         }
         
     }
