@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
-class ListaViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class ListaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var tableView: UITableView!
+    
     var pontoSelecionado:Ponto?
     
    lazy var pontos:Array<Ponto> = {
@@ -20,56 +23,45 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
     override func viewWillAppear(animated: Bool) {
-        print("oi")
-        pontos = PontoManager.sharedInstance.buscarPontos()
         self.tableView.reloadData()
-        
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pontos.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        let item:Ponto = pontos[indexPath.row]
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let ponto:Ponto = pontos[indexPath.row]
         
         var cell:CellController = tableView.dequeueReusableCellWithIdentifier("CellController") as! CellController
         
-        cell.nome.text = item.nome
-        cell.endereco.text = item.endereco
+        cell.nome.text = ponto.nome
+        cell.endereco.text = ponto.endereco
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
             var pontoSelecionado = self.pontos[indexPath.row]
@@ -87,16 +79,4 @@ class ListaViewController: UITableViewController, UITableViewDataSource, UITable
         
         return [deleteAction]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

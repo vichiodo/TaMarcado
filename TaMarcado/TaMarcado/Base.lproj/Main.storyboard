@@ -31,7 +31,7 @@
                                     <action selector="tipoMapa:" destination="vXZ-lx-hvc" eventType="valueChanged" id="azn-qx-Pup"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s05-Cl-PVi">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s05-Cl-PVi">
                                 <rect key="frame" x="524" y="481" width="50" height="50"/>
                                 <state key="normal" image="flag">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,35 +96,35 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9m3-Nl-fuP" id="4hv-tE-Aoa">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peP-nT-7im">
-                                            <rect key="frame" x="24" y="8" width="51" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky0-TZ-iDl">
+                                            <rect key="frame" x="41" y="23" width="350" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="lKt-xt-umR"/>
+                                                <constraint firstAttribute="width" constant="350" id="v1U-se-ihk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-wF-4Jt">
-                                            <rect key="frame" x="28" y="37" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeH-G5-k7T">
+                                            <rect key="frame" x="41" y="59" width="350" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Endereço:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb4-7Z-BWV">
-                                            <rect key="frame" x="217" y="8" width="78" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6A-QG-96c">
-                                            <rect key="frame" x="235" y="37" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ky0-TZ-iDl" firstAttribute="leading" secondItem="4hv-tE-Aoa" secondAttribute="leadingMargin" constant="33" id="3XV-hn-w87"/>
+                                        <constraint firstItem="ky0-TZ-iDl" firstAttribute="trailing" secondItem="DeH-G5-k7T" secondAttribute="trailing" id="9Il-vL-bbG"/>
+                                        <constraint firstItem="DeH-G5-k7T" firstAttribute="top" secondItem="ky0-TZ-iDl" secondAttribute="bottom" constant="15" id="Kyd-Np-fIw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="DeH-G5-k7T" secondAttribute="bottom" constant="12.5" id="M8J-hd-9Ku"/>
+                                        <constraint firstItem="DeH-G5-k7T" firstAttribute="leading" secondItem="ky0-TZ-iDl" secondAttribute="leading" id="SLP-kr-FtM"/>
+                                        <constraint firstItem="ky0-TZ-iDl" firstAttribute="top" secondItem="4hv-tE-Aoa" secondAttribute="topMargin" constant="15" id="yLz-Y6-ikc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="endereco" destination="p6A-QG-96c" id="kSm-8p-ox0"/>
-                                    <outlet property="nome" destination="Afb-wF-4Jt" id="nul-2t-JOP"/>
+                                    <outlet property="endereco" destination="DeH-G5-k7T" id="q3o-qu-M7s"/>
+                                    <outlet property="nome" destination="ky0-TZ-iDl" id="CV9-sn-1qG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -134,6 +134,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="U4U-6F-J3b"/>
+                    <connections>
+                        <outlet property="tableView" destination="jJc-FO-gNI" id="xaI-0K-SXJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OGr-6t-Ji6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -43,17 +43,13 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        mapa.removeAnnotations(mapa.annotations)
-//        for var i = 0; i<pontos.count; ++i{
-//            var mp: MapaPoint?
-//            mp!.criaPonto((pontos[i].localizacao as! CLLocation).coordinate, nome: pontos[i].nome, endereco: pontos[i].endereco)
-//            mp!.adicionarPin(mapa)
-//            mapaPoints[i] = mp!
+        mapa.removeAnnotations(mapa.annotations)
+        for var i = 0; i<pontos.count; ++i{
+            var mp = MapaPoint()
+            mp.criaPonto(((pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: pontos[i].nome, endereco: pontos[i].endereco)
+            mp.adicionarPin(mapa)
         
-//        }
-//        
-//        mapa.addAnnotations(mapaPoints)
-//        PontoManager.sharedInstance.pegarNovoLocal().adicionarPin(mapa)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,7 +82,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             textField.placeholder = "Nome"
             self.txtField = textField
         }
-        let salvar:UIAlertAction = UIAlertAction(title: "", style: .Default, handler: { (ACTION) -> Void in
+        let salvar:UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
             nomeLocal = self.txtField!.text
             if (nomeLocal == "" || nomeLocal == " ") {
                 nomeLocal = "Local"
@@ -95,14 +91,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mapaPoint.adicionarPin(self.mapa)
             
-            self.ponto = PontoManager.sharedInstance.novoPonto()
-            self.ponto?.nome = nomeLocal
-            self.ponto?.endereco = mapaPoint.subtitle
-            print(mapaPoint.subtitle)
-            self.ponto?.localizacao = self.locations.lastObject!
-            PontoManager.sharedInstance.salvarPonto()
-            
-//            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
+            PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
         })
         [alerta.addAction(salvar)]
         
