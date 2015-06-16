@@ -32,6 +32,7 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     override func viewWillAppear(animated: Bool) {
+        pontos = PontoManager.sharedInstance.buscarPontos()
         self.tableView.reloadData()
     }
     

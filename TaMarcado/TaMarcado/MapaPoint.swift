@@ -14,7 +14,8 @@ class MapaPoint: NSObject, MKAnnotation {
     var title:String!
     var subtitle:String!
     var coordinate: CLLocationCoordinate2D
-    
+    var ponto:Ponto?
+
     override init(){
         coordinate = CLLocationCoordinate2D()
     }
@@ -46,11 +47,48 @@ class MapaPoint: NSObject, MKAnnotation {
                 else {
                     newNewString = placemark.thoroughfare
                 }
-                
-                self.subtitle = newNewString
             }
             
             mapa.addAnnotation(self)
         })
     }
+    
+    func adicionarPin2(mapa: MKMapView){
+        var aux: CLLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+        
+        
+        CLGeocoder().reverseGeocodeLocation(aux, completionHandler: { (placemarks, error) -> Void in
+            if (error != nil){
+                println("ERRO")
+                self.subtitle = "Endereco nao encontrado !!!"
+                return
+            }
+            else {
+                var placemark: CLPlacemark = placemarks.last as! CLPlacemark
+                var newString: String = placemark.thoroughfare.stringByAppendingString(", ")
+                var newNewString: String!
+                if placemark.subThoroughfare != nil {
+                    newNewString = newString.stringByAppendingString(placemark.subThoroughfare)
+                }
+                else {
+                    newNewString = placemark.thoroughfare
+                }
+                
+                self.subtitle = newNewString
+                if self.ponto == nil{
+                    self.ponto = PontoManager.sharedInstance.novoPonto()
+                
+                }
+                self.ponto?.nome = self.title
+                self.ponto?.endereco = newNewString
+                self.ponto?.localizacao = aux
+                PontoManager.sharedInstance.salvarPonto()
+                
+                
+            }
+            
+            mapa.addAnnotation(self)
+        })
+    }
+
 }
