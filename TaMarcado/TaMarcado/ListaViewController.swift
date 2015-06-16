@@ -15,6 +15,7 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var tableView: UITableView!
     
     var pontoSelecionado:Ponto?
+    var row:Int?
     
    lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
@@ -79,5 +80,19 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         return [deleteAction]
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var indexPath = self.tableView.indexPathForSelectedRow()
+        
+        if let aux = segue.destinationViewController as? MapaViewController{
+            aux.selectedCell = row
+            aux.selected = true
+        
+        }
+        
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+         row = indexPath.row
+        
     }
 }

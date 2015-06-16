@@ -23,6 +23,10 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     var txtField: UITextField?
     var ponto:Ponto?
     
+    var selectedCell:AnyObject?
+    var linha:Int?
+    var selected:AnyObject?
+
     
     lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
