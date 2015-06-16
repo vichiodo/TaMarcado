@@ -43,6 +43,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        pontos = PontoManager.sharedInstance.buscarPontos()
         mapa.removeAnnotations(mapa.annotations)
         for var i = 0; i<pontos.count; ++i{
             var mp = MapaPoint()
