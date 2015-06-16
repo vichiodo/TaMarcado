@@ -39,13 +39,14 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v4w-yp-RMq">
-                                <rect key="frame" x="16" y="68" width="179" height="29"/>
+                                <rect key="frame" x="210.5" y="44" width="179" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Padrão"/>
                                     <segment title="Satélite"/>
                                     <segment title="Híbrido"/>
                                 </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="tipoMapa:" destination="vXZ-lx-hvc" eventType="valueChanged" id="azn-qx-Pup"/>
                                 </connections>
@@ -54,6 +55,7 @@
                         <color key="backgroundColor" red="0.1764705882" green="0.59999999999999998" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="yXp-2U-mtS" secondAttribute="bottom" id="18m-2W-Xjf"/>
+                            <constraint firstItem="v4w-yp-RMq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="24" id="5LE-xt-cjL"/>
                             <constraint firstItem="yXp-2U-mtS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="8Tg-du-FPh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s05-Cl-PVi" secondAttribute="trailing" constant="10" id="KPX-t7-k9M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yXp-2U-mtS" secondAttribute="trailing" constant="-16" id="L1v-ww-CaV"/>
@@ -62,6 +64,8 @@
                             <constraint firstItem="s05-Cl-PVi" firstAttribute="top" secondItem="5H3-BK-dxT" secondAttribute="top" id="cCe-fw-HE3"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="cEQ-6d-BSl"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" constant="-389" id="cZC-QR-aei"/>
+                            <constraint firstAttribute="centerX" secondItem="v4w-yp-RMq" secondAttribute="centerX" id="cjU-or-hf0"/>
+                            <constraint firstItem="v4w-yp-RMq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="jh2-6P-A6L"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="48" id="kVQ-LG-9BK"/>
                             <constraint firstItem="yXp-2U-mtS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="20" id="ncV-NG-DG7"/>
                             <constraint firstItem="5H3-BK-dxT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="vcu-Ms-ktZ"/>
@@ -69,6 +73,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="cEQ-6d-BSl"/>
+                                <exclude reference="cZC-QR-aei"/>
+                                <exclude reference="jh2-6P-A6L"/>
+                                <exclude reference="kVQ-LG-9BK"/>
                                 <exclude reference="XId-VI-yhk"/>
                             </mask>
                         </variation>
