@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Mapa View Controller-->
+        <!--Mapa-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="mapaView" id="vXZ-lx-hvc" customClass="MapaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                                     <action selector="tipoMapa:" destination="vXZ-lx-hvc" eventType="valueChanged" id="azn-qx-Pup"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s05-Cl-PVi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s05-Cl-PVi">
                                 <rect key="frame" x="524" y="481" width="50" height="50"/>
                                 <state key="normal" image="flag">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,15 +54,15 @@
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="yXp-2U-mtS" secondAttribute="bottom" id="18m-2W-Xjf"/>
                             <constraint firstItem="yXp-2U-mtS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="8Tg-du-FPh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="s05-Cl-PVi" secondAttribute="trailing" constant="10" id="IYv-jP-WbR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s05-Cl-PVi" secondAttribute="trailing" constant="10" id="KPX-t7-k9M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yXp-2U-mtS" secondAttribute="trailing" constant="-16" id="L1v-ww-CaV"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5H3-BK-dxT" secondAttribute="bottom" constant="20" id="PDz-1v-XUk"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="v4w-yp-RMq" secondAttribute="bottom" constant="20" id="XId-VI-yhk"/>
+                            <constraint firstItem="s05-Cl-PVi" firstAttribute="top" secondItem="5H3-BK-dxT" secondAttribute="top" id="cCe-fw-HE3"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="cEQ-6d-BSl"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="cZC-QR-aei"/>
                             <constraint firstItem="v4w-yp-RMq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="kVQ-LG-9BK"/>
                             <constraint firstItem="yXp-2U-mtS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="20" id="ncV-NG-DG7"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="s05-Cl-PVi" secondAttribute="bottom" constant="20" id="sCZ-89-UJm"/>
                             <constraint firstItem="5H3-BK-dxT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="vcu-Ms-ktZ"/>
                         </constraints>
                         <variation key="default">
@@ -72,7 +72,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="tvP-Hn-cAv"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="mapa" id="tvP-Hn-cAv"/>
                     <connections>
                         <outlet property="btnLocalizacao" destination="5H3-BK-dxT" id="Y4c-B9-x24"/>
                         <outlet property="mapa" destination="yXp-2U-mtS" id="3zf-lh-r8G"/>
@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="1503" y="216"/>
         </scene>
-        <!--Lista View Controller-->
+        <!--Lugares-->
         <scene sceneID="lbH-gj-vcz">
             <objects>
                 <tableViewController id="bYq-Uo-lM6" customClass="ListaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,7 +133,7 @@
                             <outlet property="delegate" destination="bYq-Uo-lM6" id="q3p-hc-u59"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="U4U-6F-J3b"/>
+                    <tabBarItem key="tabBarItem" title="Lugares" image="lista" id="U4U-6F-J3b"/>
                     <connections>
                         <outlet property="tableView" destination="jJc-FO-gNI" id="xaI-0K-SXJ"/>
                     </connections>
@@ -164,6 +164,8 @@
     </scenes>
     <resources>
         <image name="flag" width="50" height="50"/>
+        <image name="lista" width="32" height="32"/>
         <image name="local" width="50" height="50"/>
+        <image name="mapa" width="32" height="32"/>
     </resources>
 </document>
