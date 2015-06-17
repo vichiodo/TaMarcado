@@ -80,7 +80,11 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mapa" image="mapa" id="tvP-Hn-cAv"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="tab1" id="tvP-Hn-cAv">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="tab1fill"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="btnLocalizacao" destination="5H3-BK-dxT" id="Y4c-B9-x24"/>
                         <outlet property="mapa" destination="yXp-2U-mtS" id="3zf-lh-r8G"/>
@@ -90,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="495" y="955"/>
         </scene>
-        <!--Lugares-->
+        <!--Locais-->
         <scene sceneID="JAW-Zj-2oW">
             <objects>
                 <viewController id="20K-05-JPN" customClass="ListaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
@@ -167,7 +171,11 @@
                             <constraint firstItem="gyL-hW-cFL" firstAttribute="top" secondItem="vbW-io-7Um" secondAttribute="topMargin" constant="20" id="nx9-di-Ht1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Lugares" image="lista" id="6nV-fs-LQY"/>
+                    <tabBarItem key="tabBarItem" title="Locais" image="tab2" selectedImage="tab2fill" id="6nV-fs-LQY">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="tab2fill"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="gyL-hW-cFL" id="kvj-2B-IFb"/>
                     </connections>
@@ -198,8 +206,10 @@
     </scenes>
     <resources>
         <image name="flag" width="50" height="50"/>
-        <image name="lista" width="32" height="32"/>
         <image name="local" width="50" height="50"/>
-        <image name="mapa" width="32" height="32"/>
+        <image name="tab1" width="30" height="30"/>
+        <image name="tab1fill" width="30" height="30"/>
+        <image name="tab2" width="30" height="30"/>
+        <image name="tab2fill" width="30" height="30"/>
     </resources>
 </document>
