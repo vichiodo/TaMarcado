@@ -23,10 +23,6 @@ class PontoManager {
     
     private init() {}
     
-    func pegarNovoLocal() -> MapaPoint{
-        return novoLocal
-    }
-    
     func novoPonto() -> Ponto {
         return NSEntityDescription.insertNewObjectForEntityForName(PontoManager.entityName, inManagedObjectContext: managedContext) as! Ponto
     }
@@ -94,9 +90,7 @@ class PontoManager {
         ponto.setValue(endereco, forKey: "endereco")
         
         let archivedLocation = NSKeyedArchiver.archivedDataWithRootObject(localizacao)
-
         ponto.setValue(localizacao, forKey: "localizacao")
-
         
         salvarPonto()
     }

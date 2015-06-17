@@ -8,7 +8,7 @@
         <!--Mapa-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="mapaView" id="vXZ-lx-hvc" customClass="MapaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapaView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="MapaViewController" customModule="TaMarcado" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503" y="216"/>
+            <point key="canvasLocation" x="495" y="955"/>
         </scene>
         <!--Lugares-->
         <scene sceneID="JAW-Zj-2oW">
@@ -150,7 +150,6 @@
                                         <connections>
                                             <outlet property="endereco" destination="2GX-hr-x1U" id="Tye-on-z1t"/>
                                             <outlet property="nome" destination="719-hY-qsx" id="Ubc-xr-Yhz"/>
-                                            <segue destination="vXZ-lx-hvc" kind="show" identifier="segue" id="QhX-YB-V4u"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -175,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvm-OH-w2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="1209"/>
+            <point key="canvasLocation" x="1153" y="955"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ste-iS-nx5">
@@ -194,7 +193,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38z-t4-I5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="479"/>
+            <point key="canvasLocation" x="838" y="201"/>
         </scene>
     </scenes>
     <resources>
@@ -203,7 +202,4 @@
         <image name="local" width="50" height="50"/>
         <image name="mapa" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="QhX-YB-V4u"/>
-    </inferredMetricsTieBreakers>
 </document>

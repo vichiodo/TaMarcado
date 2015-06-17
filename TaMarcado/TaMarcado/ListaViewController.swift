@@ -14,23 +14,17 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet var tableView: UITableView!
     
-    var pontoSelecionado:Ponto?
-    var row:Int?
-    
-   lazy var pontos:Array<Ponto> = {
+    lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
-    }()
-        
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         pontos = PontoManager.sharedInstance.buscarPontos()
@@ -46,9 +40,9 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let ponto:Ponto = pontos[indexPath.row]
-        
         var cell:CellController = tableView.dequeueReusableCellWithIdentifier("CellController") as! CellController
+        
+        let ponto:Ponto = pontos[indexPath.row]
         
         cell.nome.text = ponto.nome
         cell.endereco.text = ponto.endereco
@@ -56,10 +50,9 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
     
@@ -81,20 +74,12 @@ class ListaViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return [deleteAction]
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var indexPath = self.tableView.indexPathForSelectedRow()
-        if(segue.identifier == "segue"){
-        if let aux = segue.destinationViewController as? MapaViewController{
-            aux.selectedCell = row
-            aux.selected = true
-            aux.linha = row
-        
-        }
-        }
-        
-    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-         row = indexPath.row
+        let barViewControllers = self.tabBarController?.viewControllers
+        let mapaVC = barViewControllers![0] as! MapaViewController
+        mapaVC.linha = indexPath.row
         
+        self.tabBarController?.selectedIndex = 0
     }
 }

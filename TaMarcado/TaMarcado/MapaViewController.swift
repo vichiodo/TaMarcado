@@ -17,29 +17,27 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager! = CLLocationManager()
     var locations: NSArray = []
-    var userDef: NSUserDefaults!
-    var mapaPoints: Array<MapaPoint>!
-    
     var txtField: UITextField?
-    var ponto:Ponto?
+    var linha: Int?
     
-    var selectedCell:AnyObject?
-    var linha:Int?
-    var selected:AnyObject?
-
-    
+    // recupera os dados salvos no CoreData
     lazy var pontos:Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
         }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // inicia o CLLocationManager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
+        
+        // se for a primeira vez, pede pro usuario autorizar a localização
         let request = CLLocationManager.authorizationStatus()
         if request == CLAuthorizationStatus.NotDetermined{
             locationManager.requestWhenInUseAuthorization()
         }
+        
+        // busca pela localização atual
         locationManager.startUpdatingLocation()
         mapa.userTrackingMode = MKUserTrackingMode.Follow
         let image = UIImage(named: "localp") as UIImage!
@@ -47,30 +45,30 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        // atualiza o mapa com os pins nos respectivos lugares
         pontos = PontoManager.sharedInstance.buscarPontos()
         mapa.removeAnnotations(mapa.annotations)
-        for var i = 0; i<pontos.count; ++i{
+        for var i = 0; i < pontos.count; ++i {
             var mp = MapaPoint()
             mp.criaPonto(((pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: pontos[i].nome, endereco: pontos[i].endereco)
             mp.adicionarPin(mapa)
-        
         }
         
-        if(linha > -1){
-            var aux = mapaPoints[linha!]
+        // se vier de um toque na tabela, foca nesse pin
+        if linha > -1 {
             
-            var region = MKCoordinateRegionMakeWithDistance(aux.coordinate, 500, 500)
+            let localPonto = (pontos[linha!].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
+            var region = MKCoordinateRegionMakeWithDistance(localPonto, 500, 500)
             mapa.setRegion(region, animated: true)
-
+            linha = -1
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func tipoMapa(sender: AnyObject) {
+    @IBAction func tipoMapa(sender: AnyObject) { // segmented control para os tipo de mapa
         switch (sender as! UISegmentedControl).selectedSegmentIndex{
         case 0:
             mapa.mapType = MKMapType.Standard
@@ -83,7 +81,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func marcar(sender: AnyObject) {
+    @IBAction func marcar(sender: AnyObject) { // criar um pin novo
         locationManager.startUpdatingLocation()
         mapa.userTrackingMode = MKUserTrackingMode.Follow
         let image = UIImage(named: "localp") as UIImage!
@@ -98,14 +96,14 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         }
         let salvar:UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
             nomeLocal = self.txtField!.text
+            
             if (nomeLocal == "" || nomeLocal == " ") {
                 nomeLocal = "Local"
             }
+            
             var mapaPoint = MapaPoint()
             mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mapaPoint.adicionarPin2(self.mapa)
-            
-            //PontoManager.sharedInstance.salvarNovoPonto(nomeLocal, endereco: mapaPoint.subtitle, localizacao: (self.locations.lastObject! as! CLLocation))
         })
         [alerta.addAction(salvar)]
         
@@ -113,6 +111,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func localizacaoAtual(sender: AnyObject) {
+        // encontra o usuario e mostra sua localização
         let image = UIImage(named: "localp") as UIImage!
         btnLocalizacao.setImage(image, forState: .Normal)
         locationManager.startUpdatingLocation()
@@ -120,6 +119,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         mapa.setRegion(MKCoordinateRegionMake(mapa.userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01)), animated: true)
     }
     
+    // metodo para atualizar a localização do usuario
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if mapa.userTrackingMode == .None {
             let image = UIImage(named: "local") as UIImage!

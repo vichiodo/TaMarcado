@@ -14,7 +14,5 @@ class Ponto: NSManagedObject {
     @NSManaged var endereco: String
     @NSManaged var localizacao: AnyObject
     @NSManaged var nome: String
-    @NSManaged var y: NSNumber
-    @NSManaged var x: NSNumber
 
 }
