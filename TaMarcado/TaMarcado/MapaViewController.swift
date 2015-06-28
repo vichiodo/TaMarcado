@@ -42,21 +42,20 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         mapa.userTrackingMode = MKUserTrackingMode.Follow
         let image = UIImage(named: "localp") as UIImage!
         btnLocalizacao.setImage(image, forState: .Normal)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        
         // atualiza o mapa com os pins nos respectivos lugares
         pontos = PontoManager.sharedInstance.buscarPontos()
         mapa.removeAnnotations(mapa.annotations)
         for var i = 0; i < pontos.count; ++i {
             var mp = MapaPoint()
             mp.criaPonto(((pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: pontos[i].nome, endereco: pontos[i].endereco)
-            mp.adicionarPin(mapa)
+            mp.adicionarPin(mapa, adicionando: false)
         }
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         // se vier de um toque na tabela, foca nesse pin
         if linha > -1 {
-            
             let localPonto = (pontos[linha!].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
             var region = MKCoordinateRegionMakeWithDistance(localPonto, 500, 500)
             mapa.setRegion(region, animated: true)
@@ -92,18 +91,23 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         let alerta: UIAlertController = UIAlertController(title: "Nome do local", message: nil, preferredStyle: .Alert)
         alerta.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.placeholder = "Nome"
+            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
+            textField.autocorrectionType = UITextAutocorrectionType.Yes
             self.txtField = textField
         }
-        let salvar:UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
+        
+        alerta.addAction(UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil))
+
+        let salvar: UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
             nomeLocal = self.txtField!.text
             
             if (nomeLocal == "" || nomeLocal == " ") {
                 nomeLocal = "Local"
             }
             
-            var mapaPoint = MapaPoint()
-            mapaPoint.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
-            mapaPoint.adicionarPin2(self.mapa)
+            var mp = MapaPoint()
+            mp.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
+            mp.adicionarPin(self.mapa, adicionando: true)
         })
         [alerta.addAction(salvar)]
         
