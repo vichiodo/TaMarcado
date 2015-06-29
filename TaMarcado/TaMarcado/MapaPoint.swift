@@ -20,7 +20,6 @@ class MapaPoint: NSObject, MKAnnotation {
         coordinate = CLLocationCoordinate2D()
     }
     
-    
     func criaPonto(localizacao: CLLocationCoordinate2D, nome:String, endereco:String) {
         self.coordinate = localizacao
         self.title = nome
