@@ -15,6 +15,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapa: MKMapView!
     @IBOutlet weak var btnLocalizacao: UIBarButtonItem!
+    @IBOutlet weak var btnMarcar: UIBarButtonItem!
     
     var locationManager: CLLocationManager! = CLLocationManager()
     var locations: NSArray = []
@@ -51,7 +52,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         for var i = 0; i < pontos.count; ++i {
             var mp = MapaPoint()
             mp.criaPonto(((pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: pontos[i].nome, endereco: pontos[i].endereco)
-            mp.adicionarPin(mapa, adicionando: false)
+            mapa.addAnnotation(mp)
         }
     }
     
@@ -124,11 +125,16 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         if tableView.alpha == 0.0 {
             pontos = PontoManager.sharedInstance.buscarPontos()
             self.tableView.reloadData()
+            self.btnLocalizacao.enabled = false
+            self.btnMarcar.enabled = false
             
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 self.tableView.alpha = 1.0
             })
         } else {
+            self.btnLocalizacao.enabled = true
+            self.btnMarcar.enabled = true
+            
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 self.tableView.alpha = 0.0
             })
@@ -190,6 +196,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         UIView.animateWithDuration(0.25, animations: { () -> Void in
             self.tableView.alpha = 0.0
         })
+        self.btnLocalizacao.enabled = true
+        self.btnMarcar.enabled = true
         
         // se vier de um toque na tabela, foca nesse pin
         let localPonto = (pontos[indexPath.row].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
