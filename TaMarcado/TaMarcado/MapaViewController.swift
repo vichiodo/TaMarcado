@@ -22,24 +22,30 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     var txtField: UITextField?
     
     // recupera os dados salvos no CoreData
-    lazy var pontos:Array<Ponto> = {
+    lazy var pontos: Array<Ponto> = {
         return PontoManager.sharedInstance.buscarPontos()
         }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.layer.cornerRadius = 10.0
+        self.tableView.clipsToBounds = true
+        self.tableView.layer.borderWidth = 3.0
+        self.tableView.layer.borderColor = UIColor(red: 53/255, green: 172/255, blue: 219/255, alpha: 1).CGColor
+        
         // inicia o CLLocationManager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         
         // se for a primeira vez, pede pro usuario autorizar a localização
         let request = CLLocationManager.authorizationStatus()
-        if request == CLAuthorizationStatus.NotDetermined{
+        if request == CLAuthorizationStatus.NotDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressed:")
-        self.view.addGestureRecognizer(longPressRecognizer)
+        self.mapa.addGestureRecognizer(longPressRecognizer)
         
         // busca pela localização atual
         locationManager.startUpdatingLocation()
@@ -61,7 +67,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     @IBAction func tipoMapa(sender: AnyObject) { // segmented control para os tipo de mapa
-        switch (sender as! UISegmentedControl).selectedSegmentIndex{
+        switch (sender as! UISegmentedControl).selectedSegmentIndex {
         case 0:
             mapa.mapType = MKMapType.Standard
         case 1:
@@ -127,6 +133,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             self.tableView.reloadData()
             self.btnLocalizacao.enabled = false
             self.btnMarcar.enabled = false
+            self.mapa.userInteractionEnabled = false
+            self.navigationItem.title = "Favoritos"
             
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 self.tableView.alpha = 1.0
@@ -134,6 +142,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         } else {
             self.btnLocalizacao.enabled = true
             self.btnMarcar.enabled = true
+            self.mapa.userInteractionEnabled = true
+            self.navigationItem.title = "Ta Marcado!"
             
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 self.tableView.alpha = 0.0
@@ -198,6 +208,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         })
         self.btnLocalizacao.enabled = true
         self.btnMarcar.enabled = true
+        self.mapa.userInteractionEnabled = true
+        self.navigationItem.title = "Ta Marcado!"
         
         // se vier de um toque na tabela, foca nesse pin
         let localPonto = (pontos[indexPath.row].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
@@ -229,7 +241,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 
                 var mp = MapaPoint()
                 var tapPoint: CLLocationCoordinate2D = self.mapa.convertPoint(touchLocation, toCoordinateFromView: self.view)
-
+                
                 mp.criaPonto(tapPoint, nome: nomeLocal as String, endereco: "buscando...")
                 mp.adicionarPin(self.mapa, adicionando: true)
             })
@@ -237,7 +249,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             
             self.presentViewController(alerta, animated: true, completion: nil)
         }
-        
     }
     
 }
