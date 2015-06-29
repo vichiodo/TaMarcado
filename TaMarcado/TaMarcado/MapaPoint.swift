@@ -29,10 +29,15 @@ class MapaPoint: NSObject, MKAnnotation {
     func adicionarPin(mapa: MKMapView, adicionando: Bool) {
         var aux: CLLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
         CLGeocoder().reverseGeocodeLocation(aux, completionHandler: { (placemarks, error) -> Void in
-            if (error != nil){
-                println("ERRO")
-                self.subtitle = "Endereco nao encontrado !!!"
-                return
+            if (error != nil) {
+//                self.subtitle = "Buscando endereço..."
+//                if self.ponto == nil {
+//                    self.ponto = PontoManager.sharedInstance.novoPonto()
+//                }
+//                self.ponto?.nome = self.title
+//                self.ponto?.endereco = "Buscando endereço..."
+//                self.ponto?.localizacao = aux
+//                PontoManager.sharedInstance.salvarPonto()
             }
             else {
                 var placemark: CLPlacemark = placemarks.last as! CLPlacemark
@@ -46,7 +51,7 @@ class MapaPoint: NSObject, MKAnnotation {
                 }
                 if adicionando {
                     self.subtitle = newNewString
-                    if self.ponto == nil{
+                    if self.ponto == nil {
                         self.ponto = PontoManager.sharedInstance.novoPonto()
                     }
                     self.ponto?.nome = self.title
