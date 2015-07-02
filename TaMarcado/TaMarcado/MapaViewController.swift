@@ -23,7 +23,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     // recupera os dados salvos no CoreData
     lazy var pontos: Array<Ponto> = {
-        return PontoManager.sharedInstance.buscarPontos()
+        return PontoManager.sharedInstance.buscarPontos().reverse()
         }()
     
     override func viewDidLoad() {
@@ -129,7 +129,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     @IBAction func favoritos(sender: AnyObject) {
         if tableView.alpha == 0.0 {
-            pontos = PontoManager.sharedInstance.buscarPontos()
+            pontos = PontoManager.sharedInstance.buscarPontos().reverse()
             self.tableView.reloadData()
             self.btnLocalizacao.enabled = false
             self.btnMarcar.enabled = false
