@@ -23,7 +23,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     // recupera os dados salvos no CoreData
     lazy var pontos: Array<Ponto> = {
-        return PontoManager.sharedInstance.buscarPontos().reverse()
+        return Array(PontoManager.sharedInstance.buscarPontos().reverse())
         }()
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         pontos = PontoManager.sharedInstance.buscarPontos()
         mapa.removeAnnotations(mapa.annotations)
         for var i = 0; i < pontos.count; ++i {
-            var mp = MapaPoint()
+            let mp = MapaPoint()
             mp.criaPonto(((pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: pontos[i].nome, endereco: pontos[i].endereco)
             mapa.addAnnotation(mp)
         }
@@ -96,13 +96,13 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         alerta.addAction(UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil))
         
         let salvar: UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
-            nomeLocal = self.txtField!.text
+            nomeLocal = self.txtField!.text!
             
             if (nomeLocal == "" || nomeLocal == " ") {
                 nomeLocal = "Local"
             }
             
-            var mp = MapaPoint()
+            let mp = MapaPoint()
             mp.criaPonto((self.locations.lastObject as! CLLocation).coordinate, nome: nomeLocal as String, endereco: "buscando...")
             mp.adicionarPin(self.mapa, adicionando: true)
         })
@@ -120,7 +120,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     // metodo para atualizar a localização do usuario
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if mapa.userTrackingMode == .None {
             btnLocalizacao.image = UIImage(named: "localizacao")
         }
@@ -129,7 +129,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     @IBAction func favoritos(sender: AnyObject) {
         if tableView.alpha == 0.0 {
-            pontos = PontoManager.sharedInstance.buscarPontos().reverse()
+            pontos = Array(PontoManager.sharedInstance.buscarPontos().reverse())
             self.tableView.reloadData()
             self.btnLocalizacao.enabled = false
             self.btnMarcar.enabled = false
@@ -160,7 +160,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: CellController = tableView.dequeueReusableCellWithIdentifier("CellController") as! CellController
+        let cell: CellController = tableView.dequeueReusableCellWithIdentifier("CellController") as! CellController
         
         cell.nome.text = pontos[indexPath.row].nome
         cell.endereco.text = pontos[indexPath.row].endereco
@@ -173,10 +173,10 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {}
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar") { (action, indexPath) -> Void in
-            var pontoSelecionado = self.pontos[indexPath.row]
+            let pontoSelecionado = self.pontos[indexPath.row]
             
             if PontoManager.sharedInstance.apagarPonto(pontoSelecionado) {
                 self.pontos.removeAtIndex(indexPath.row)
@@ -186,7 +186,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 self.pontos = PontoManager.sharedInstance.buscarPontos()
                 self.mapa.removeAnnotations(self.mapa.annotations)
                 for var i = 0; i < self.pontos.count; ++i {
-                    var mp = MapaPoint()
+                    let mp = MapaPoint()
                     mp.criaPonto(((self.pontos[i].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D), nome: self.pontos[i].nome, endereco: self.pontos[i].endereco)
                     mp.adicionarPin(self.mapa, adicionando: false)
                 }
@@ -203,18 +203,64 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
-            self.tableView.alpha = 0.0
-        })
-        self.btnLocalizacao.enabled = true
-        self.btnMarcar.enabled = true
-        self.mapa.userInteractionEnabled = true
-        self.navigationItem.title = "Ta Marcado!"
         
-        // se vier de um toque na tabela, foca nesse pin
-        let localPonto = (pontos[indexPath.row].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
-        var region = MKCoordinateRegionMakeWithDistance(localPonto, 500, 500)
-        mapa.setRegion(region, animated: true)
+        let alerta: UIAlertController = UIAlertController(title: "Deseja fazer a navegação por qual mapa?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let waze:UIAlertAction = UIAlertAction(title: "Waze", style: UIAlertActionStyle.Default, handler: { (ACTION) -> Void in
+            
+            if UIApplication.sharedApplication().canOpenURL(NSURL(string:"waze://?z=6")!){
+                let urlString = "waze://?ll=\((self.pontos[indexPath.row].localizacao as! CLLocation).coordinate.latitude)),\((self.pontos[indexPath.row].localizacao as! CLLocation).coordinate.longitude)&navigate=yes"
+                UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
+            } else {
+                print("ERRO!!!!!")
+            }
+            
+        })
+        
+        alerta.addAction(waze)
+        
+        let mapaApple:UIAlertAction = UIAlertAction(title: "Mapas", style: .Default, handler: { (ACTION) -> Void in
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            self.pontos[indexPath.row].mapItem().openInMapsWithLaunchOptions(launchOptions)
+        })
+        
+        alerta.addAction(mapaApple)
+        
+        let mapaGoogle = UIAlertAction(title: "GoogleMaps", style: .Default, handler: { (ACTION) -> Void in
+            //                    let newString = aString.stringByReplacingOccurrencesOfString(" ", withString: "+")
+            let urlString = "comgooglemaps://?daddr=\((self.pontos[indexPath.row].localizacao as! CLLocation).coordinate.latitude),\((self.pontos[indexPath.row].localizacao as! CLLocation).coordinate.longitude)&directionsmode=driving"
+            
+            if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
+                UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
+            }
+        })
+        
+        alerta.addAction(mapaGoogle)
+        
+        let cancelar:UIAlertAction = UIAlertAction(title: "Cancelar", style: .Cancel) { (ACTION) -> Void in
+            alerta.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        alerta.addAction(cancelar)
+        
+        
+        
+        self.presentViewController(alerta, animated: true, completion: nil)
+        
+        
+//        UIView.animateWithDuration(0.25, animations: { () -> Void in
+//            self.tableView.alpha = 0.0
+//        })
+//        self.btnLocalizacao.enabled = true
+//        self.btnMarcar.enabled = true
+//        self.mapa.userInteractionEnabled = true
+//        self.navigationItem.title = "Ta Marcado!"
+//        
+//        // se vier de um toque na tabela, foca nesse pin
+//        let localPonto = (pontos[indexPath.row].localizacao as! CLLocation).coordinate as CLLocationCoordinate2D
+//        let region = MKCoordinateRegionMakeWithDistance(localPonto, 500, 500)
+//        mapa.setRegion(region, animated: true)
     }
     
     func longPressed(longPress: UILongPressGestureRecognizer) {
@@ -233,14 +279,14 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             alerta.addAction(UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil))
             
             let salvar: UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
-                nomeLocal = self.txtField!.text
+                nomeLocal = self.txtField!.text!
                 
                 if (nomeLocal == "" || nomeLocal == " ") {
                     nomeLocal = "Local"
                 }
                 
-                var mp = MapaPoint()
-                var tapPoint: CLLocationCoordinate2D = self.mapa.convertPoint(touchLocation, toCoordinateFromView: self.view)
+                let mp = MapaPoint()
+                let tapPoint: CLLocationCoordinate2D = self.mapa.convertPoint(touchLocation, toCoordinateFromView: self.view)
                 
                 mp.criaPonto(tapPoint, nome: nomeLocal as String, endereco: "buscando...")
                 mp.adicionarPin(self.mapa, adicionando: true)

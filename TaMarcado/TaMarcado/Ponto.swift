@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreData
+import MapKit
+import AddressBook
 
 class Ponto: NSManagedObject {
 
@@ -15,4 +17,15 @@ class Ponto: NSManagedObject {
     @NSManaged var localizacao: AnyObject
     @NSManaged var nome: String
 
+    
+    func mapItem() -> MKMapItem {
+        let addressDictionary = [String(kABPersonAddressStreetKey): endereco]
+        let placemark = MKPlacemark(coordinate: (localizacao as! CLLocation).coordinate, addressDictionary: addressDictionary)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = nome
+        
+        return mapItem
+    }
+    
 }

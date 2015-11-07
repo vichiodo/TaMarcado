@@ -28,34 +28,41 @@ class PontoManager {
     }
     
     func buscarPontos() -> Array<Ponto> {
-        let buscaRequest = NSFetchRequest(entityName: PontoManager.entityName)
-        var erro: NSError?
-        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
-        if let resultados = buscaResultados as? [Ponto] {
-            return resultados
-        } else {
-            println("Não foi possível buscar esse ponto. Erro: \(erro), \(erro!.userInfo)")
+        do {
+            let buscaRequest = NSFetchRequest(entityName: PontoManager.entityName)
+            let buscaResultados = try managedContext.executeFetchRequest(buscaRequest) as? [NSManagedObject]
+            if let resultados = buscaResultados as? [Ponto] {
+                return resultados
+            }
+            
+//            NSFetchRequest(entityName: "FetchRequest")
+        } catch {
+            
         }
-        NSFetchRequest(entityName: "FetchRequest")
         return Array<Ponto>()
+
     }
     
     func buscarPonto(index: Int) -> Ponto {
-        var ponto: Ponto = buscarPontos()[index]
+        let ponto: Ponto = buscarPontos()[index]
         return ponto
     }
     
     func salvarPonto() {
         var erro: NSError?
-        managedContext.save(&erro)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            erro = error
+        }
         
-        if let e = erro {
-            println("Não foi possível salvar esse ponto. Erro: \(erro), \(erro!.userInfo)")
+        if let _ = erro {
+            print("Não foi possível salvar esse ponto. Erro: \(erro), \(erro!.userInfo)")
         }
     }
     
     func removerTodos() {
-        var arrayPonto: Array<Ponto> = buscarPontos()
+        let arrayPonto: Array<Ponto> = buscarPontos()
         for ponto: Ponto in arrayPonto {
             managedContext.delete(ponto)
         }
@@ -67,19 +74,23 @@ class PontoManager {
         salvarPonto()
     }
     
-    func apagarPonto(var ponto:Ponto) -> Bool
+    func apagarPonto(ponto:Ponto) -> Bool
     {
         var error:NSError?
-        var pontoNome = ponto.nome
+        let pontoNome = ponto.nome
         
         managedContext.deleteObject(ponto)
-        managedContext.save(&error)
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+        }
         
-        if let e = error {
-            println("Erro ao tentar remover a Ponto (\(pontoNome)): \(error)")
+        if let _ = error {
+            print("Erro ao tentar remover a Ponto (\(pontoNome)): \(error)")
             return false
         } else {
-            println("Ponto \(pontoNome) removida com sucesso")
+            print("Ponto \(pontoNome) removida com sucesso")
         }
         return true
     }
@@ -89,7 +100,7 @@ class PontoManager {
         ponto.setValue(nome, forKey: "nome")
         ponto.setValue(endereco, forKey: "endereco")
         
-        let archivedLocation = NSKeyedArchiver.archivedDataWithRootObject(localizacao)
+        _ = NSKeyedArchiver.archivedDataWithRootObject(localizacao)
         ponto.setValue(localizacao, forKey: "localizacao")
         
         salvarPonto()

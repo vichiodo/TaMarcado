@@ -11,8 +11,8 @@ import MapKit
 import CoreLocation
 
 class MapaPoint: NSObject, MKAnnotation {
-    var title:String!
-    var subtitle:String!
+    var title:String?
+    var subtitle:String?
     var coordinate: CLLocationCoordinate2D
     var ponto:Ponto?
     
@@ -27,7 +27,7 @@ class MapaPoint: NSObject, MKAnnotation {
     }
     
     func adicionarPin(mapa: MKMapView, adicionando: Bool) {
-        var aux: CLLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+        let aux: CLLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
         CLGeocoder().reverseGeocodeLocation(aux, completionHandler: { (placemarks, error) -> Void in
             if (error != nil) {
 //                self.subtitle = "Buscando endereço..."
@@ -40,11 +40,11 @@ class MapaPoint: NSObject, MKAnnotation {
 //                PontoManager.sharedInstance.salvarPonto()
             }
             else {
-                var placemark: CLPlacemark = placemarks.last as! CLPlacemark
-                var newString: String = placemark.thoroughfare.stringByAppendingString(", ")
+                let placemark: CLPlacemark = placemarks!.last!
+                let newString: String = placemark.thoroughfare!.stringByAppendingString(", ")
                 var newNewString: String!
                 if placemark.subThoroughfare != nil {
-                    newNewString = newString.stringByAppendingString(placemark.subThoroughfare)
+                    newNewString = newString.stringByAppendingString(placemark.subThoroughfare!)
                 }
                 else {
                     newNewString = placemark.thoroughfare
@@ -54,7 +54,7 @@ class MapaPoint: NSObject, MKAnnotation {
                     if self.ponto == nil {
                         self.ponto = PontoManager.sharedInstance.novoPonto()
                     }
-                    self.ponto?.nome = self.title
+                    self.ponto?.nome = self.title!
                     self.ponto?.endereco = newNewString
                     self.ponto?.localizacao = aux
                     PontoManager.sharedInstance.salvarPonto()
