@@ -29,7 +29,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.tableFooterView = UIView(frame: CGRect.zeroRect)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.layer.cornerRadius = 10.0
         self.tableView.clipsToBounds = true
         self.tableView.layer.borderWidth = 3.0
