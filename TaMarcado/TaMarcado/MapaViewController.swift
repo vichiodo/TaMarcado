@@ -29,6 +29,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.tableFooterView = UIView(frame: CGRect.zeroRect)
         self.tableView.layer.cornerRadius = 10.0
         self.tableView.clipsToBounds = true
         self.tableView.layer.borderWidth = 3.0
@@ -152,6 +153,19 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.height, height:self.tableView.bounds.size.height))
+        
+        if(pontos.count == 0){
+            label.text = "Você não tem nenhum endereço cadastrado"
+            label.center = CGPointMake(10000, 100)
+            label.textColor = UIColor.redColor()
+            self.tableView.backgroundView = label
+        }
+        else{
+            label.text = ""
+            self.tableView.backgroundView = label
+        }
+        
         return 1
     }
     
@@ -164,6 +178,14 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         cell.nome.text = pontos[indexPath.row].nome
         cell.endereco.text = pontos[indexPath.row].endereco
+        
+        if(indexPath.row % 2 == 0){
+            cell.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 241/255, alpha: 1)
+        }
+        else{
+            cell.backgroundColor = UIColor.whiteColor()
+        }
+        
         return cell
     }
     
