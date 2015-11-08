@@ -29,6 +29,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "atualizarView", name: "atualizarView", object: nil)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.layer.cornerRadius = 10.0
         self.tableView.clipsToBounds = true
@@ -41,7 +43,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         // se for a primeira vez, pede pro usuario autorizar a localização
         let request = CLLocationManager.authorizationStatus()
-        if request == CLAuthorizationStatus.NotDetermined {
+        if request == .NotDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
         
@@ -65,6 +67,14 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if localizacaoDisponivel() == false {
+            btnMarcar.enabled = false
+        } else {
+            btnMarcar.enabled = true
+        }
     }
     
     @IBAction func tipoMapa(sender: AnyObject) { // segmented control para os tipo de mapa
@@ -114,10 +124,12 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     @IBAction func localizacaoAtual(sender: AnyObject) {
         // encontra o usuario e mostra sua localização
-        btnLocalizacao.image = UIImage(named: "localizacao-p")
-        locationManager.startUpdatingLocation()
-        mapa.userTrackingMode = MKUserTrackingMode.Follow
-        mapa.setRegion(MKCoordinateRegionMake(mapa.userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01)), animated: true)
+        if self.localizacaoDisponivel() == true {
+            btnLocalizacao.image = UIImage(named: "localizacao-p")
+            locationManager.startUpdatingLocation()
+            mapa.userTrackingMode = MKUserTrackingMode.Follow
+            mapa.setRegion(MKCoordinateRegionMake(mapa.userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01)), animated: true)
+        }
     }
     
     // metodo para atualizar a localização do usuario
@@ -319,5 +331,34 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
     }
     
+    func localizacaoDisponivel() -> Bool {
+        if CLLocationManager.authorizationStatus() == .Denied {
+            let alertController = UIAlertController(title: "Não foi possível determinar sua localização", message: "Por favor, ligue o serviço de localização", preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func atualizarView() {
+        if self.localizacaoDisponivel() == false {
+            btnMarcar.enabled = false
+        } else {
+            btnMarcar.enabled = true
+        }
+        
+    }
 }
 

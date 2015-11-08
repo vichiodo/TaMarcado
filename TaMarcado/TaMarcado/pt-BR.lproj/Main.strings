@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6I2-in-F2d"; */
+"6I2-in-F2d.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "SFh-qe-x1C"; */
+"SFh-qe-x1C.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Ta Marcado!"; ObjectID = "Uf0-co-UDU"; */
+"Uf0-co-UDU.title" = "Ta Marcado!";
+
+/* Class = "UISegmentedControl"; v4w-yp-RMq.segmentTitles[0] = "Padrão"; ObjectID = "v4w-yp-RMq"; */
+"v4w-yp-RMq.segmentTitles[0]" = "Padrão";
+
+/* Class = "UISegmentedControl"; v4w-yp-RMq.segmentTitles[1] = "Satélite"; ObjectID = "v4w-yp-RMq"; */
+"v4w-yp-RMq.segmentTitles[1]" = "Satélite";
+
+/* Class = "UISegmentedControl"; v4w-yp-RMq.segmentTitles[2] = "Híbrido"; ObjectID = "v4w-yp-RMq"; */
+"v4w-yp-RMq.segmentTitles[2]" = "Híbrido";
+
+/* Class = "UITextView"; text = "Ta Marcado!  foi feito pelos alunos do MackMobile da turma de 2015.\n\n- Bruno Faganello Neto\n- Ricardo Hochman\n- Vivian Chiodo Dias"; ObjectID = "wQG-QU-yrK"; */
+"wQG-QU-yrK.text" = "Ta Marcado!  foi feito pelos alunos do MackMobile da turma de 2015.\n\n- Bruno Faganello Neto\n- Ricardo Hochman\n- Vivian Chiodo Dias";
